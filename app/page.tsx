@@ -1,7 +1,11 @@
 import Link from "next/link";
-import { categories, club, events, formatDate, news } from "@/lib/data";
+import Sponsors from "@/components/Sponsors";
+import HeroSlider from "@/components/HeroSlider";
+import { categories, club, formatDate } from "@/lib/data";
+import { getNews } from "@/lib/sanity";
 
-export default function Home() {
+export default async function Home() {
+  const news = await getNews(3);
   const sportCount = categories.reduce((n, c) => n + c.sports.length, 0);
   const stats = [
     { v: String(sportCount), l: "Kurse & Sportarten" },
@@ -11,24 +15,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-navy text-white">
-        <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand/30 blur-3xl" aria-hidden />
-        <div className="relative mx-auto max-w-6xl px-4 py-24 sm:py-32">
-          <p className="mb-4 inline-block bg-brand px-3 py-1 text-sm font-semibold uppercase tracking-widest">Sport verbindet</p>
-          <h1 className="max-w-3xl text-5xl font-bold leading-tight sm:text-7xl">Gemeinsam bewegen in Berlin &amp; Brandenburg</h1>
-          <p className="mt-6 max-w-xl text-lg text-white/80">
-            Der {club.name} bietet Kampfkunst, Gesundheits- und Fitnesssport für Kinder, Jugendliche und Erwachsene – mit Leidenschaft und Gemeinschaft.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/verein/mitgliedschaft" className="rounded-md bg-brand px-6 py-3 font-semibold transition-colors hover:bg-brand-dark">
-              Mitglied werden
-            </Link>
-            <Link href="/sportangebote" className="rounded-md border border-white/40 px-6 py-3 font-semibold transition-colors hover:bg-white/10">
-              Sportangebote entdecken
-            </Link>
-          </div>
-        </div>
-      </section>
+      <HeroSlider slides={categories.map((c) => ({ slug: c.slug, name: c.name, text: c.text, banner: c.banner, block: c.block }))} keyVisual="/BBSV_KeyVisual.png" introText={`Der ${club.name} bietet Kampfkunst, Gesundheits- und Fitnesssport für Kinder, Jugendliche und Erwachsene – mit Leidenschaft und Gemeinschaft.`} />
 
       <section className="border-b border-black/10 bg-soft">
         <dl className="mx-auto grid max-w-6xl grid-cols-3 gap-6 px-4 py-10 text-center">
@@ -56,30 +43,20 @@ export default function Home() {
       </section>
 
       <section className="bg-soft">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-2">
+        <div className="mx-auto max-w-6xl px-4 py-16">
           <div>
             <div className="mb-6 flex items-end justify-between">
               <h2 className="text-3xl font-bold">Aktuelles</h2>
               <Link href="/aktuelles" className="text-sm font-semibold text-brand hover:underline">Alle Meldungen →</Link>
             </div>
-            <ul className="space-y-4">
-              {news.slice(0, 2).map((n) => (
-                <li key={n.date + n.title} className="rounded-xl border border-black/10 bg-white p-5">
+            {news.length === 0 && <p className="text-navy/60">Zurzeit gibt es keine Neuigkeiten.</p>}
+            <ul className="grid gap-4 md:grid-cols-3">
+              {news.map((n) => (
+                <li key={n.date + n.title} className="group relative rounded-xl border border-black/10 bg-white p-5 transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                   <time dateTime={n.date} className="text-xs font-medium text-brand">{formatDate(n.date)}</time>
-                  <p className="mt-1 font-semibold">{n.title}</p>
-                  <p className="mt-1 text-sm text-navy/70">{n.text}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="mb-6 text-3xl font-bold">Termine</h2>
-            <ul className="divide-y divide-black/10 rounded-xl border border-black/10 bg-white">
-              {events.slice(0, 3).map((e) => (
-                <li key={e.date + e.title} className="p-5">
-                  <time dateTime={e.date} className="text-xs font-medium text-brand">{formatDate(e.date)}</time>
-                  <p className="font-semibold">{e.title}</p>
-                  <p className="text-sm text-navy/60">{e.ort}</p>
+                  <p className="mt-1 font-semibold [overflow-wrap:anywhere] hyphens-auto transition-colors group-hover:text-brand">{n.title}</p>
+                  <p className="mt-1 line-clamp-3 text-sm text-navy/70">{n.text}</p>
+                  {n.slug && <Link href={`/aktuelles/${n.slug}`} className="mt-2 inline-block text-sm font-semibold text-brand after:absolute after:inset-0 group-hover:underline">Weiterlesen →</Link>}
                 </li>
               ))}
             </ul>
@@ -96,6 +73,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <Sponsors />
     </>
   );
 }

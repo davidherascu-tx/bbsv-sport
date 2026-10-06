@@ -6,7 +6,6 @@ import { childProtection, club, contactGroups, telHref } from "@/lib/data";
 
 export const metadata: Metadata = { title: "Kontakt" };
 
-const input = "w-full rounded-md border border-black/20 px-3 py-2 focus:border-brand focus:outline-none";
 const link = "font-medium text-brand hover:underline";
 
 export default function Kontakt() {
@@ -69,23 +68,6 @@ export default function Kontakt() {
             </div>
           ))}
         </div>
-
-        <form action={`mailto:${club.email}`} method="post" encType="text/plain" className="mt-16 max-w-2xl space-y-4 rounded-2xl border border-black/10 p-6">
-          <h2 className="text-2xl font-bold">Nachricht schreiben</h2>
-          <div>
-            <label htmlFor="name" className="mb-1 block text-sm font-medium">Name</label>
-            <input id="name" name="name" type="text" required className={input} />
-          </div>
-          <div>
-            <label htmlFor="email" className="mb-1 block text-sm font-medium">E-Mail</label>
-            <input id="email" name="email" type="email" required className={input} />
-          </div>
-          <div>
-            <label htmlFor="msg" className="mb-1 block text-sm font-medium">Nachricht</label>
-            <textarea id="msg" name="nachricht" rows={5} required className={input} />
-          </div>
-          <button className="rounded-md bg-brand px-6 py-3 font-semibold text-white hover:bg-brand-dark">Nachricht senden</button>
-        </form>
       </section>
     </>
   );

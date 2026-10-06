@@ -1,4 +1,4 @@
-// Aktuelles und Termine sind noch Platzhalter. Eine Postadresse fehlt noch.
+// Aktuelles ist noch Platzhalter.
 export const club = {
   name: "Berlin-Brandenburger Sportverein e. V.",
   short: "BBSV",
@@ -7,6 +7,15 @@ export const club = {
   phoneNote: "Mittwoch 9–10 Uhr",
   fax: "030 / 48 63 81 62",
   email: "info@bbsv-sport.de",
+  street: "Neue Schönholzer Str. 32",
+  city: "13187 Berlin",
+  board: [
+    { name: "Jan Seeger", role: "Vorsitzender" },
+    { name: "Pierre Leiding", role: "stellv. Vorsitzender" },
+    { name: "Dirk Leiding", role: "Kassenwart" },
+  ],
+  register: { court: "Amtsgericht Charlottenburg", number: "10745 Nz" },
+  editorial: "Dirk Leiding",
   emailBoard: "vorstand@bbsv-sport.de",
 };
 
@@ -31,12 +40,15 @@ export type Sport = {
   slug: string;
   name: string;
   text: string;
+  image?: string;
 };
 
 export type Category = {
   slug: string;
   name: string;
   emoji: string;
+  banner: string;
+  block: string;
   text: string;
   sports: Sport[];
 };
@@ -46,17 +58,21 @@ export const categories: Category[] = [
     slug: "kampfkunst",
     name: "Kampfkunst",
     emoji: "🥋",
-    text: "Karate, Kobudo und Selbstverteidigung – Körper und Geist in Form.",
+    banner: "/Kampfsport_banner.jpg",
+    block: "/Icon_Block_Kampfsport.png",
+    text: "Karate und Selbstverteidigung – Körper und Geist in Form.",
     sports: [
       {
         slug: "karate",
+        image: "/Karate.jpg",
         name: "Karate",
-        text: "Lerne eine alte japanische Kampfkunst kennen, die Körper und Geist fit hält. Karate ist ein vielseitiges Ganzkörpertraining und kann problemlos von jedem – egal wie alt oder sportlich – betrieben werden. Dabei unterstützen Dich erfahrene lizensierte Trainer.",
+        text: "Lerne eine alte japanische Kampfkunst kennen, die Körper und Geist fit hält. Karate ist ein vielseitiges Ganzkörpertraining und kann problemlos von jedem – egal wie alt oder sportlich – betrieben werden. Dabei unterstützen Dich erfahrene lizensierte Trainer. Beginne mit uns Deinen spannenden Weg. Wir freuen uns auf Dich!",
       },
       {
         slug: "selbstverteidigung",
+        image: "/Selbstverteidigung.jpg",
         name: "Selbstverteidigung",
-        text: "Lerne richtiges Verhalten, um einen Angriff zu vermeiden bzw. effektiv abzuwehren. Die Bewegungsabläufe sind auch ohne jahrelanges Training einfach und schnell zu erlernen. Die eingesetzten Techniken sind ohne große Kraft wirkungsvoll einsetzbar und sind für Frauen und Männer gleichermaßen geeignet.",
+        text: "Lerne richtiges Verhalten, um einen Angriff zu vermeiden bzw. effektiv abzuwehren. Die Bewegungsabläufe sind auch ohne jahrelanges Training einfach und schnell zu erlernen. Die eingesetzten Techniken sind ohne große Kraft wirkungsvoll einsetzbar und sind für Frauen und Männern gleichermaßen geeignet.",
       },
     ],
   },
@@ -64,30 +80,37 @@ export const categories: Category[] = [
     slug: "gesundheit",
     name: "Gesundheit",
     emoji: "❤️",
+    banner: "/Gesundheitssport_banner.jpg",
+    block: "/Icon_Block_Gesundheitssport.png",
     text: "Gesundheitsfördernde Angebote für Prävention, Rehabilitation und Wohlbefinden.",
     sports: [
       {
         slug: "koronarsport",
+        image: "/Koronarsport.jpg",
         name: "Koronarsport",
         text: "Ziel dieses Sportangebotes ist es, unter ärztlicher Betreuung, angepasst an die individuelle Belastbarkeit jedes Einzelnen, die motorischen Grundeigenschaften wie Ausdauer, Koordination und Beweglichkeit zu trainieren. Damit soll den Teilnehmern ermöglicht werden, trotz ihres Krankheitsbildes den Anforderungen des Alltages zu entsprechen.",
       },
       {
         slug: "multiple-sklerose-sport",
+        image: "/MSundSport.jpg",
         name: "Multiple Sklerose Sport",
         text: "Unsere zertifizierten Trainer leben selbst seit über 10 Jahren mit der Diagnose MS. Wir bieten selbstständig gehfähigen Betroffenen ein individuell angepasstes Training in kleinen Gruppen. Durch zahlreiche Studien ist inzwischen bewiesen, dass Bewegung und Sport gerade bei dieser Patientengruppe vielfältige positive Wirkungen auf die Lebensqualität hat und das Selbstbewusstsein stärkt.",
       },
       {
         slug: "pilates",
+        image: "/Pilates.jpg",
         name: "Pilates",
         text: "Pilates ist eine ganzheitliche Trainingsmethode, bei der die Kräftigung der Tiefenmuskulatur im Mittelpunkt steht. Das sanfte Körpertraining fördert Kraft und Beweglichkeit und ist dabei gleichzeitig entspannend.",
       },
       {
         slug: "seniorensport",
+        image: "/Seniorensport.jpg",
         name: "Seniorensport",
         text: "Es ist nie zu spät, mit dem Sport zu beginnen, und selten zu früh. Vielleicht fühlen Sie sich zu alt für eine sportliche Herausforderung. Oder erste Gesundheitsprobleme machen Ihnen zu schaffen. Und es macht Sie natürlich nicht jünger, Sport zu treiben. Dennoch trägt sportliche Aktivität auch mit zunehmendem Alter entscheidend dazu bei, Ihre Gesundheit zu erhalten und sogar zu verbessern. Im Berlin-Brandenburger Sportverein werden Sie von ausgebildeten Gesundheitssporttrainern angeleitet und betreut.",
       },
       {
         slug: "yoga",
+        image: "/Yoga.jpg",
         name: "Yoga",
         text: "Yoga stärkt Körper und Geist, mit mehr Kraft, Beweglichkeit und Balance. Baut Stress ab, verbessert Konzentration und schenkt innere Ruhe. Ideal für alle, die Fitness, Entspannung und Achtsamkeit verbinden möchten.",
       },
@@ -97,10 +120,13 @@ export const categories: Category[] = [
     slug: "fitness",
     name: "Fitness",
     emoji: "💪",
+    banner: "/Fitness_banner.jpg",
+    block: "/Icon_Block_Fintness.png",
     text: "Ausdauer, Koordination und Belastbarkeit – für mehr Lebensqualität im Alltag.",
     sports: [
       {
         slug: "aerobic",
+        image: "/Aerobic.jpg",
         name: "Aerobic / Step-Aerobic / Bauch-Beine-Po",
         text: "Unsere Angebote fördern Deine Ausdauer, Koordination und Belastbarkeit. Du steigerst Deine Leistungsfähigkeit, bist den Anforderungen des Alltags besser gewachsen und erhöhst damit Deine Lebensqualität.",
       },
@@ -188,10 +214,6 @@ export const news = [
   { date: "2026-09-15", title: "Beispiel-Meldung", text: "Platzhalter für eine weitere Neuigkeit aus dem Verein." },
 ];
 
-export const events = [
-  { date: "2026-11-07", title: "Beispiel-Termin", ort: "Ort folgt", kat: "Verein" },
-  { date: "2026-12-12", title: "Beispiel-Termin", ort: "Ort folgt", kat: "Verein" },
-];
 
 // PDFs bitte nach public/downloads/ legen.
 export const downloads = [
@@ -201,7 +223,7 @@ export const downloads = [
 ];
 
 export function formatDate(iso: string) {
-  return new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "long", year: "numeric" }).format(new Date(iso));
+  return new Intl.DateTimeFormat("de-DE", { day: "2-digit", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(iso));
 }
 
 export function initials(name: string) {

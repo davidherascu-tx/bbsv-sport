@@ -70,18 +70,21 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 px-3 pt-3 sm:px-5">
+    <header className="sticky top-0 z-50 h-16">
       <div
-        className={`relative mx-auto flex h-16 max-w-6xl items-center justify-between rounded-2xl border px-4 backdrop-blur-xl transition-all duration-300 ${
-          scrolled ? "border-black/10 bg-white/85 shadow-lg shadow-navy/10" : "border-black/5 bg-white/70"
+        className={`mx-auto transition-all duration-300 ${
+          scrolled
+            ? "mt-3 w-[calc(100%-1.5rem)] max-w-6xl rounded-2xl border border-black/10 bg-white/85 shadow-lg shadow-navy/10 backdrop-blur-xl sm:w-[calc(100%-2.5rem)]"
+            : "w-full max-w-[100vw] border-b border-black/5 bg-white"
         }`}
       >
-        <Link href="/" onClick={closeAll} aria-label="BBSV – Startseite" className="shrink-0">
+        <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-5 lg:grid lg:grid-cols-[1fr_auto_1fr]">
+        <Link href="/" onClick={closeAll} aria-label="BBSV – Startseite" className="shrink-0 justify-self-start">
           <Image src="/bbsv_logo.png" alt="Berlin-Brandenburger Sportverein e. V." width={800} height={231} priority className="h-10 w-auto" />
         </Link>
 
         {/* Desktop */}
-        <nav className="hidden h-full items-center gap-1 lg:flex" aria-label="Hauptnavigation">
+        <nav className="hidden h-full items-center justify-center gap-1 lg:flex" aria-label="Hauptnavigation">
           {nav.map((item) => {
             const mega = item.children?.some((c) => c.children);
             const open = menu === item.label;
@@ -102,7 +105,7 @@ export default function Header() {
                   onClick={closeAll}
                   aria-haspopup={item.children ? "true" : undefined}
                   aria-expanded={item.children ? open : undefined}
-                  className={`group/link relative flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                  className={`group/link relative flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold leading-none transition-colors ${
                     active || open ? "text-brand" : "text-navy hover:text-brand"
                   }`}
                 >
@@ -188,7 +191,7 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-end gap-2">
           <Link
             href="/verein/mitgliedschaft"
             onClick={closeAll}
@@ -207,11 +210,12 @@ export default function Header() {
             </svg>
           </button>
         </div>
+        </div>
       </div>
 
       {/* Mobile */}
       <div
-        className={`fixed inset-x-0 bottom-0 top-[5.5rem] z-40 overflow-y-auto bg-white/95 px-5 pb-10 pt-4 backdrop-blur-xl transition duration-300 lg:hidden ${
+        className={`fixed inset-x-0 bottom-0 ${scrolled ? "top-[5.5rem]" : "top-16"} z-40 overflow-y-auto bg-white/95 px-5 pb-10 pt-4 backdrop-blur-xl transition duration-300 lg:hidden ${
           mobileOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-3 opacity-0"
         }`}
       >

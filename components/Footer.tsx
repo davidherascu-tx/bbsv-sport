@@ -42,7 +42,7 @@ export default function Footer() {
           <ul className="mt-3 space-y-2 text-sm text-white/70">
             <li><a href={telHref(club.phone)} className="hover:text-white">{club.phone}</a> <span className="text-white/50">({club.phoneNote})</span></li>
             <li><a href={`mailto:${club.email}`} className="hover:text-white">{club.email}</a></li>
-            <li><Link href="/kontakt" className="hover:text-white">Kontaktformular</Link></li>
+            <li><Link href="/kontakt" className="hover:text-white">Kontakt</Link></li>
           </ul>
         </div>
       </div>
