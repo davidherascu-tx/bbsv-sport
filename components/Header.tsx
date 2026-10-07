@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { categories, nav, type NavItem } from "@/lib/data";
 
-const emojiBySlug = Object.fromEntries(categories.map((c) => [c.slug, c.emoji]));
+const iconBySlug = Object.fromEntries(categories.map((c) => [c.slug, c.icon]));
 const descBySlug = Object.fromEntries(categories.map((c) => [c.slug, c.text]));
 
 function Chevron({ open }: { open: boolean }) {
@@ -155,9 +155,7 @@ export default function Header() {
                         return (
                           <div key={cat.href} className="rounded-xl p-4 transition-colors hover:bg-soft/70">
                             <Link href={cat.href} onClick={closeAll} className="group/cat flex items-start gap-3">
-                              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10 text-2xl" aria-hidden>
-                                {emojiBySlug[slug]}
-                              </span>
+                              <Image src={iconBySlug[slug]} alt="" width={143} height={143} className="h-11 w-11 shrink-0 rounded-xl" />
                               <span>
                                 <span className="block font-display text-base font-bold uppercase tracking-wide text-navy group-hover/cat:text-brand">
                                   {cat.label}

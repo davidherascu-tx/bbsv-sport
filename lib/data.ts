@@ -49,6 +49,7 @@ export type Category = {
   emoji: string;
   banner: string;
   block: string;
+  icon: string;
   text: string;
   sports: Sport[];
 };
@@ -60,6 +61,7 @@ export const categories: Category[] = [
     emoji: "🥋",
     banner: "/Kampfsport_banner.jpg",
     block: "/Icon_Block_Kampfsport.png",
+    icon: "/icon_kampfsport.webp",
     text: "Karate und Selbstverteidigung – Körper und Geist in Form.",
     sports: [
       {
@@ -82,6 +84,7 @@ export const categories: Category[] = [
     emoji: "❤️",
     banner: "/Gesundheitssport_banner.jpg",
     block: "/Icon_Block_Gesundheitssport.png",
+    icon: "/icon_gesundheitssport.webp",
     text: "Gesundheitsfördernde Angebote für Prävention, Rehabilitation und Wohlbefinden.",
     sports: [
       {
@@ -121,7 +124,8 @@ export const categories: Category[] = [
     name: "Fitness",
     emoji: "💪",
     banner: "/Fitness_banner.jpg",
-    block: "/Icon_Block_Fintness.png",
+    block: "/Icon_Block_Fitness.png",
+    icon: "/icon_fitness.webp",
     text: "Ausdauer, Koordination und Belastbarkeit – für mehr Lebensqualität im Alltag.",
     sports: [
       {
@@ -181,7 +185,7 @@ export const trainerGroups: { category: string; trainers: Trainer[] }[] = [
   {
     category: "Kampfkunst",
     trainers: [
-      { name: "Klaus Berg", photo: "/klaus_berg.jpg", offers: "Karate, Selbstverteidigung", sports: ["karate", "selbstverteidigung"] },
+      { name: "Klaus Berg", photo: "/klaus_berg.jpg", offers: "Karate", sports: ["karate"] },
       { name: "Pierre Leiding", photo: "/pierre_leiding.jpg", role: "Stellv. Vorsitzender", offers: "Karate", sports: ["karate"] },
       { name: "Dirk Leiding", photo: "/dirk_leiding.jpg", role: "Kassenwart", offers: "Karate", sports: ["karate"] },
       { name: "Jörg Daeblitz", photo: "/joerg_daeblitz.jpg", offers: "Karate", sports: ["karate"] },

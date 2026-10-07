@@ -87,7 +87,6 @@ export default async function SportPage({ params }: Props) {
                     <Image src={t.photo} alt="" width={96} height={96} className="h-12 w-12 rounded-full object-cover object-top" />
                     <span>
                       <span className="block font-semibold">{t.name}</span>
-                      {t.role && <span className="text-navy/60">{t.role}</span>}
                     </span>
                   </li>
                 ))}
