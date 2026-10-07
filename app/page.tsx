@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Sponsors from "@/components/Sponsors";
 import HeroSlider from "@/components/HeroSlider";
@@ -32,11 +33,13 @@ export default async function Home() {
         <h2 className="mb-8 text-3xl font-bold">Unsere Sportangebote</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {categories.map((c) => (
-            <Link key={c.slug} href={`/sportangebote/${c.slug}`} className="group rounded-xl border border-black/10 p-6 transition-shadow hover:shadow-lg">
-              <div className="text-4xl" aria-hidden>{c.emoji}</div>
-              <h3 className="mt-4 text-2xl font-bold group-hover:text-brand">{c.name}</h3>
-              <p className="mt-2 text-sm text-navy/70">{c.text}</p>
-              <p className="mt-4 text-sm font-medium text-navy/60">{c.sports.map((s) => s.name).join(" · ")}</p>
+            <Link key={c.slug} href={`/sportangebote/${c.slug}`} className="group flex overflow-hidden rounded-xl border border-black/10 transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+              <Image src={c.block} alt="" width={143} height={264} className="h-auto w-20 shrink-0 self-start sm:w-24" />
+              <div className="min-w-0 flex-1 p-6">
+                <h3 className="text-2xl font-bold group-hover:text-brand">{c.name}</h3>
+                <p className="mt-2 text-sm text-navy/70">{c.text}</p>
+                <p className="mt-4 text-sm font-medium text-navy/60">{c.sports.map((s) => s.name).join(" · ")}</p>
+              </div>
             </Link>
           ))}
         </div>
