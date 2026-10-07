@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import { categories } from "@/lib/data";
 
@@ -18,12 +19,14 @@ export default function Trainingsangebote() {
 
         {categories.map((c) => (
           <div key={c.slug} className="mt-14">
-            <h2 className="mb-6 border-b-2 border-brand pb-2 text-3xl font-bold">
-              <span aria-hidden>{c.emoji}</span> {c.name}
+            <h2 className="mb-6 flex items-center gap-3 border-b-2 border-brand pb-3 text-3xl font-bold">
+              <Image src={c.icon} alt="" width={143} height={143} className="h-11 w-11 shrink-0 rounded-lg" />
+              {c.name}
             </h2>
             <div className="grid gap-6 md:grid-cols-2">
-              {c.sports.map((s) => (
-                <article key={s.slug} className="flex flex-col rounded-xl border border-black/10 p-6">
+              {c.sports.map((s, i) => (
+                <Reveal key={s.slug} delay={(i % 2) * 120} className="h-full">
+                <article className="flex h-full flex-col overflow-hidden rounded-xl border border-black/10 p-6">
                   {s.image && <Image src={s.image} alt="" width={500} height={350} className="-mx-6 -mt-6 mb-4 max-w-none rounded-t-xl object-cover" style={{ width: "calc(100% + 3rem)" }} />}
                   <h3 className="text-xl font-bold">{s.name}</h3>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-navy/75">{s.text}</p>
@@ -31,6 +34,7 @@ export default function Trainingsangebote() {
                     Mehr Erfahren
                   </Link>
                 </article>
+                </Reveal>
               ))}
             </div>
           </div>

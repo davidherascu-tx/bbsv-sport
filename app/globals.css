@@ -67,3 +67,45 @@ h3 {
 @media (prefers-reduced-motion: reduce) {
   .hero-block-in, .hero-text-in, .hero-key-in { animation: none; opacity: 1; }
 }
+
+/* Einblenden beim Scrollen (components/Reveal.tsx) */
+.reveal {
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s;
+}
+.reveal[data-reveal="hidden"] {
+  opacity: 0;
+  transform: translateY(32px);
+}
+.reveal[data-reveal="hidden"][data-dir="left"] { transform: translateX(-48px); }
+.reveal[data-reveal="hidden"][data-dir="right"] { transform: translateX(48px); }
+.reveal[data-reveal="hidden"][data-dir="zoom"] { transform: scale(0.92); }
+.reveal[data-reveal="shown"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Seitenkopf: Titel und Unterzeile gleiten beim Laden ein */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.anim-up {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Banner in den Slides zoomen langsam heran */
+@keyframes hero-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.hero-zoom {
+  animation: hero-zoom 9s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-up, .hero-zoom { animation: none; }
+  .reveal { transition: none; }
+}

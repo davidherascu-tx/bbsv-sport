@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "./Reveal";
 
 const sponsors = [
   { name: "TARGO BANK", logo: "/TARGO-BANK_logo.png", width: 180, height: 80 },
@@ -18,13 +19,16 @@ export default function Sponsors() {
           <p className="mt-3 text-navy/70">Wir danken unseren Partnern, die den Vereinssport in Berlin und Brandenburg unterstützen.</p>
         </div>
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {sponsors.map((s) => (
-            <li
+          {sponsors.map((s, i) => (
+            <Reveal
+              as="li"
               key={s.name}
+              delay={i * 90}
+              dir="zoom"
               className="flex h-28 items-center justify-center overflow-hidden rounded-xl bg-white p-4 shadow-sm ring-1 ring-black/5 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <Image src={s.logo} alt={s.name} width={s.width} height={s.height} className="max-h-full w-auto max-w-full object-contain" />
-            </li>
+            </Reveal>
           ))}
         </ul>
       </div>

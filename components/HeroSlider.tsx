@@ -94,7 +94,7 @@ export default function HeroSlider({
                 </>
               ) : (
                 <>
-                  <Image src={item.slide.banner} alt="" fill sizes="100vw" className="object-cover" />
+                  <Image src={item.slide.banner} alt="" fill sizes="100vw" className={`object-cover ${active ? "hero-zoom" : ""}`} />
                   <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/50 to-transparent" aria-hidden />
 
                   {/* Inhalt wird pro aktivem Slide neu gemountet, damit die Animationen erneut starten */}

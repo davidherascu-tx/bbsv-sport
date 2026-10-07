@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import Reveal from "./Reveal";
 import { formatDate } from "@/lib/data";
 import type { NewsItem } from "@/lib/sanity";
 
@@ -15,8 +16,9 @@ export default function NewsList({ news }: { news: NewsItem[] }) {
 
   return (
     <>
-      {shown.map((n) => (
-        <article key={(n.slug ?? "") + n.date + n.title} className="group relative flex overflow-hidden rounded-xl border border-black/10 transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+      {shown.map((n, i) => (
+        <Reveal key={(n.slug ?? "") + n.date + n.title} delay={(i % PAGE) * 90}>
+        <article className="group relative flex overflow-hidden rounded-xl border border-black/10 transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
           {n.image && (
             <div className="relative w-28 shrink-0 self-stretch overflow-hidden sm:w-44">
               <Image src={n.image.url} alt={n.image.alt ?? ""} fill sizes="(min-width: 640px) 176px, 112px" className="object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -33,6 +35,7 @@ export default function NewsList({ news }: { news: NewsItem[] }) {
             )}
           </div>
         </article>
+        </Reveal>
       ))}
 
       {rest > 0 && (

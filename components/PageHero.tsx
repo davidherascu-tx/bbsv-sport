@@ -10,9 +10,9 @@ export default function PageHero({ title, subtitle, image }: { title: string; su
         </>
       )}
       <div className="relative mx-auto max-w-6xl px-4 py-14 sm:py-20">
-        <div className="mb-4 h-1 w-16 bg-brand" />
-        <h1 className="text-3xl font-bold sm:text-5xl">{title}</h1>
-        {subtitle && <p className="mt-4 max-w-2xl text-lg text-white/75">{subtitle}</p>}
+        <div className="anim-up mb-4 h-1 w-16 bg-brand" />
+        <h1 className="anim-up text-3xl font-bold sm:text-5xl" style={{ animationDelay: "0.08s" }}>{title}</h1>
+        {subtitle && <p className="anim-up mt-4 max-w-2xl text-lg text-white/75" style={{ animationDelay: "0.18s" }}>{subtitle}</p>}
       </div>
     </section>
   );
