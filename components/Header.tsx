@@ -244,7 +244,10 @@ export default function Header() {
                   <div className="pb-4 pl-1">
                     {item.children.map((c) => (
                       <div key={c.href} className="mt-1">
-                        <Link href={c.href} onClick={closeAll} className="block rounded-lg px-3 py-2 font-semibold text-navy hover:bg-soft">
+                        <Link href={c.href} onClick={closeAll} className="flex items-center gap-3 rounded-lg px-3 py-2 font-semibold text-navy hover:bg-soft">
+                          {iconBySlug[c.href.split("/").pop()!] && (
+                            <Image src={iconBySlug[c.href.split("/").pop()!]} alt="" width={143} height={143} className="h-9 w-9 shrink-0 rounded-lg" />
+                          )}
                           {c.label}
                         </Link>
                         {c.children && (
