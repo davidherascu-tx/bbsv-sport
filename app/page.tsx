@@ -19,14 +19,23 @@ export default async function Home() {
       <HeroSlider slides={categories.map((c) => ({ slug: c.slug, name: c.name, text: c.text, banner: c.banner, block: c.block }))} keyVisual="/BBSV_KeyVisual.png" introText={`Der ${club.name} bietet Kampfkunst, Gesundheits- und Fitnesssport für Kinder, Jugendliche und Erwachsene – mit Leidenschaft und Gemeinschaft.`} />
 
       <section className="border-b border-black/10 bg-soft">
-        <dl className="mx-auto grid max-w-6xl grid-cols-3 gap-6 px-4 py-10 text-center">
-          {stats.map((s) => (
-            <div key={s.l}>
-              <dd className="font-display text-4xl font-bold text-brand">{s.v}</dd>
-              <dt className="text-sm text-navy/70">{s.l}</dt>
-            </div>
-          ))}
-        </dl>
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 py-10 md:flex-row md:justify-between md:gap-12">
+          <dl className="grid w-full grid-cols-3 gap-6 text-center md:flex-1">
+            {stats.map((s) => (
+              <div key={s.l}>
+                <dd className="font-display text-4xl font-bold text-brand">{s.v}</dd>
+                <dt className="text-sm text-navy/70">{s.l}</dt>
+              </div>
+            ))}
+          </dl>
+          <Link href="/kontakt" className="flex shrink-0 items-center gap-4 rounded-xl bg-white p-3 pr-5 shadow-sm ring-1 ring-black/5 transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+            <Image src="/Kinder_Schutz.webp" alt="Kinderschutzsiegel des LSB Berlin 2026–2031" width={500} height={538} className="h-24 w-auto" />
+            <span className="max-w-[11rem] text-sm leading-snug text-navy/80">
+              <span className="block font-semibold text-navy">Kinderschutz im Verein</span>
+              Siegel des LSB Berlin
+            </span>
+          </Link>
+        </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16">
