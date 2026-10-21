@@ -8,6 +8,7 @@ import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {deDELocale} from '@sanity/locale-de-de'
+import {media} from 'sanity-plugin-media'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {apiVersion, dataset, projectId} from './sanity/env'
@@ -27,6 +28,8 @@ export default defineConfig({
   },
   plugins: [
     deDELocale(),
+    // Mediathek: zentrale Verwaltung aller Bilder und Dateien, in Meldungen wiederverwendbar
+    media(),
     structureTool({structure}),
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin

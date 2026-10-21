@@ -16,6 +16,13 @@ export const post = defineType({
     }),
     defineField({ name: "date", title: "Datum", type: "date", options: { dateFormat: "DD.MM.YYYY" }, initialValue: () => new Date().toISOString().slice(0, 10), validation: (r) => r.required() }),
     defineField({
+      name: "publishAt",
+      title: "Veröffentlichen ab (optional)",
+      description: "Leer lassen = sofort nach dem Veröffentlichen sichtbar. Mit Datum und Uhrzeit erscheint die Meldung erst dann auf der Website (Verzögerung bis zu 1 Minute).",
+      type: "datetime",
+      options: { timeStep: 15 },
+    }),
+    defineField({
       name: "image",
       title: "Titelbild",
       type: "image",
@@ -66,5 +73,12 @@ export const post = defineType({
     }),
   ],
   orderings: [{ title: "Datum, neueste zuerst", name: "dateDesc", by: [{ field: "date", direction: "desc" }] }],
-  preview: { select: { title: "title", subtitle: "date", media: "image" } },
+  preview: {
+    select: { title: "title", date: "date", publishAt: "publishAt", media: "image" },
+    prepare: ({ title, date, publishAt, media }) => ({
+      title,
+      media,
+      subtitle: publishAt && new Date(publishAt) > new Date() ? `${date} · geplant ab ${new Date(publishAt).toLocaleString("de-DE")}` : date,
+    }),
+  },
 });

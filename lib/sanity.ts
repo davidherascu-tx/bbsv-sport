@@ -17,7 +17,7 @@ export async function getNews(limit?: number): Promise<NewsItem[]> {
   if (!client) return staticNews.slice(0, limit);
   try {
     return await client.fetch<NewsItem[]>(
-      `*[_type == "post" && defined(slug.current)] | order(date desc, _createdAt desc)[0...$limit]{
+      `*[_type == "post" && defined(slug.current) && (!defined(publishAt) || publishAt <= now())] | order(date desc, _createdAt desc)[0...$limit]{
         "slug": slug.current, date, title, text,
         "image": image{ ${IMG}, alt }
       }`,
@@ -33,7 +33,7 @@ export async function getPost(slug: string): Promise<NewsItem | null> {
   if (!client) return null;
   try {
     return await client.fetch<NewsItem | null>(
-      `*[_type == "post" && slug.current == $slug][0]{
+      `*[_type == "post" && slug.current == $slug && (!defined(publishAt) || publishAt <= now())][0]{
         "slug": slug.current, date, title, text,
         "image": image{ ${IMG}, alt },
         "moreImages": moreImages[defined(asset)]{ ${IMG} },
