@@ -60,7 +60,7 @@ export default function HeroSlider({
                     <div className="relative mx-auto flex h-full max-w-6xl items-center justify-between gap-8 px-4 pb-12">
                       <div className="hero-text-in max-w-xl">
                         <p className="mb-3 inline-block bg-brand px-3 py-1 text-xs font-semibold uppercase tracking-widest sm:mb-4 sm:text-sm">Sport verbindet</p>
-                        <h1 className="text-[1.75rem] font-bold leading-tight sm:text-4xl lg:text-6xl">Gemeinsam bewegen in Berlin &amp; Brandenburg</h1>
+                        <h1 className="text-[1.75rem] font-bold leading-tight sm:text-4xl lg:text-6xl">Gemeinsam bewegen in Berlin &amp; <span className="whitespace-nowrap">Brandenburg</span></h1>
                         <p className="mt-3 text-sm text-white/85 sm:mt-4 sm:text-lg">{introText}</p>
                         <div className="mt-5 flex flex-wrap gap-3 sm:mt-6">
                           <Link href="/verein/mitgliedschaft" className="rounded-md bg-brand px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-brand-dark sm:px-6 sm:py-3 sm:text-base">
