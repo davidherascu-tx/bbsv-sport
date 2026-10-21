@@ -3,7 +3,7 @@ import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { trainerGroups } from "@/lib/data";
 
-export const metadata: Metadata = { title: "Trainer" };
+export const metadata: Metadata = { title: "Trainer", description: "Die Trainerinnen und Trainer des BBSV Berlin-Brandenburger Sportverein e. V." };
 
 export default function Trainer() {
   return (

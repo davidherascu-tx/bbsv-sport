@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 
-export const metadata: Metadata = { title: "Über uns" };
+export const metadata: Metadata = { title: "Über uns", description: "Der BBSV Berlin-Brandenburger Sportverein e. V. – Vorstand, Verein und Kinderschutz." };
 
 const timeline = [
   { y: "1980", t: "Gründung des Karatevereins Shotokan Karate Do Berlin Pankow e. V." },

@@ -3,7 +3,7 @@ import NewsList from "@/components/NewsList";
 import PageHero from "@/components/PageHero";
 import { getNews } from "@/lib/sanity";
 
-export const metadata: Metadata = { title: "Aktuelles" };
+export const metadata: Metadata = { title: "Aktuelles", description: "Neuigkeiten und Meldungen aus dem BBSV Berlin-Brandenburger Sportverein e. V." };
 
 export default async function Aktuelles() {
   const news = await getNews();

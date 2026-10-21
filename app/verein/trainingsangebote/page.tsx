@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 import PageHero from "@/components/PageHero";
 import { categories } from "@/lib/data";
 
-export const metadata: Metadata = { title: "Trainingsangebote" };
+export const metadata: Metadata = { title: "Trainingsangebote", description: "Trainingszeiten und Orte aller Kurse des BBSV Berlin." };
 
 export default function Trainingsangebote() {
   return (

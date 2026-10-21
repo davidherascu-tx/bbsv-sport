@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { downloads } from "@/lib/data";
 
-export const metadata: Metadata = { title: "Mitgliedschaft" };
+export const metadata: Metadata = { title: "Mitgliedschaft", description: "Mitglied im BBSV werden: Aufnahmeantrag, Satzung und Beitragsordnung zum Download." };
 
 export default function Mitgliedschaft() {
   return (
