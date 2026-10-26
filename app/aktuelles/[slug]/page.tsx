@@ -15,7 +15,7 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(slug);
-  return { title: post?.title ?? "Aktuelles", description: post?.text.slice(0, 160) };
+  return { title: post?.title ?? "Aktuelles", description: post?.text.slice(0, 160), alternates: { canonical: `/aktuelles/${slug}` } };
 }
 
 function downloadName(title: string, original?: string) {

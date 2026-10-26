@@ -4,7 +4,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { childProtection, club, contactGroups, telHref } from "@/lib/data";
 
-export const metadata: Metadata = { title: "Kontakt", description: "Ansprechpartner, Telefon und E-Mail des BBSV in Berlin-Reinickendorf. Probetraining jederzeit kostenlos möglich." };
+export const metadata: Metadata = { alternates: { canonical: "/kontakt" }, title: "Kontakt", description: "Ansprechpartner, Telefon und E-Mail des BBSV in Berlin-Reinickendorf. Probetraining jederzeit kostenlos möglich." };
 
 const link = "font-medium text-brand hover:underline";
 

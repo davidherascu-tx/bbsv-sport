@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   description:
     "Der Berlin-Brandenburger Sportverein e. V. – Sport für alle Generationen: Fußball, Handball, Volleyball, Leichtathletik, Schwimmen und Fitness.",
   metadataBase: new URL("https://www.bbsv-sport.de"),
-  alternates: { canonical: "./" },
   openGraph: {
     type: "website",
     locale: "de_DE",

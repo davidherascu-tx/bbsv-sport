@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import CountUp from "@/components/CountUp";
@@ -6,6 +7,8 @@ import Sponsors from "@/components/Sponsors";
 import HeroSlider from "@/components/HeroSlider";
 import { categories, club, formatDate } from "@/lib/data";
 import { getNews } from "@/lib/sanity";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default async function Home() {
   const news = await getNews(3);

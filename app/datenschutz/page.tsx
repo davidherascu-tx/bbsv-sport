@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import { childProtection, club, telHref } from "@/lib/data";
 
-export const metadata: Metadata = { title: "Datenschutz", description: "Datenschutzerklärung des BBSV Berlin-Brandenburger Sportverein e. V." };
+export const metadata: Metadata = { alternates: { canonical: "/datenschutz" }, title: "Datenschutz", description: "Datenschutzerklärung des BBSV Berlin-Brandenburger Sportverein e. V." };
 
 const h2 = "mt-10 text-2xl font-bold text-navy";
 const h3 = "mt-6 text-lg font-bold text-navy";

@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { categories } from "@/lib/data";
 
-export const metadata: Metadata = { title: "Sportangebote", description: "Kampfkunst, Gesundheitssport und Fitness beim BBSV Berlin: alle Kurse und Sportarten im Überblick." };
+export const metadata: Metadata = { alternates: { canonical: "/sportangebote" }, title: "Sportangebote", description: "Kampfkunst, Gesundheitssport und Fitness beim BBSV Berlin: alle Kurse und Sportarten im Überblick." };
 
 export default function Sportangebote() {
   return (

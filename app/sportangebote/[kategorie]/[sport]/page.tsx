@@ -15,7 +15,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { kategorie, sport } = await params;
   const s = getSport(kategorie, sport);
-  return { title: s?.name ?? "Sportangebot", description: s?.text };
+  return { title: s?.name ?? "Sportangebot", description: s?.text, alternates: { canonical: `/sportangebote/${kategorie}/${sport}` } };
 }
 
 export default async function SportPage({ params }: Props) {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import { club, telHref } from "@/lib/data";
 
-export const metadata: Metadata = { title: "Impressum", description: "Impressum und Vereinsangaben des BBSV Berlin-Brandenburger Sportverein e. V." };
+export const metadata: Metadata = { alternates: { canonical: "/impressum" }, title: "Impressum", description: "Impressum und Vereinsangaben des BBSV Berlin-Brandenburger Sportverein e. V." };
 
 const h2 = "mt-10 text-2xl font-bold text-navy";
 const link = "text-brand hover:underline";
